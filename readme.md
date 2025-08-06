@@ -1,36 +1,50 @@
-# Materiales de entrenamiento testados Taller Quibdó
+# \# \_Jornadas epidemiológicas Bogotá 2025\_
 
-Lugar: Quibdó, Chocó
+# 
 
-Fecha: Julio 16-29 2023
+# Este repositorio contiene:
 
-Número de asistentes: 25
+# 
 
-*Perfil de los asistentes:*
+# \### Taller 01. Introducción a R y RStudio
 
--   Funcionarios Secretaría Departamental de Salud de Chocó
+# 
 
--   Funcionarios Secretaría Muncicipal de Salud de Quibdó
+# Testado pero aún sin correcciones posterior a la actividad.
 
--   Profesores y egresados de la UTCH
+# 
 
--   Red de parteras de Chocó
+# \### Taller 02. Limpieza de datos
 
-Este repositorio contiene:
+# 
 
-### Taller 01. Introducción a R y RStudio
+# No testado por falta de tiempo. Es un taller muy largo, necesita un
 
-Testado pero aún sin correcciones posterior a la actividad.
+# re-ajuste máximo para que sea útil para ell propósito.
 
-### Taller 02. Limpieza de datos
+# 
 
-No testado por falta de tiempo. Es un taller muy largo, necesita un
-re-ajuste máximo para que sea útil para ell propósito.
+# \### Taller 03. Visualización con ggplot
 
-### Taller 03. Visualización con ggplot
+# 
 
-Testado y parcialmente corregido posterior a la actividad.
+# Testado y parcialmente corregido posterior a la actividad.
 
-### Taller 04. R Markdown
+# 
 
-Testado y corregido posterior a la actividad.
+# \### Taller 04. R Markdown
+
+# 
+
+# Testado y corregido posterior a la actividad.
+
+# 
+
+# \### Taller 05. Ejercicio práctico - Reporte con R Markdown
+
+# 
+
+# Testado y corregido posterior a la actividad.
+
+# 
+
