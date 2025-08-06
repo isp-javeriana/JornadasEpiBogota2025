@@ -38,6 +38,7 @@ Instalación de paquetes sugeridos:
 
 ```r
 install.packages(c("tidyverse", "knitr", "rmarkdown"))
+```
 
 ## Propiedad institucional
 
