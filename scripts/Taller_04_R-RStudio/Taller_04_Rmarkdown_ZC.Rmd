@@ -1,0 +1,163 @@
+---
+title: "Taller R Markdown, Epiverse"
+authors: Zulma. Cucunubá
+date: "2023-07-27"
+output:
+  html_document:
+    df_print: paged
+    self_contained: true 
+  pdf_document: default
+licenses: "CC-BY"
+bibliography: RMarkdown.bib  
+---
+
+```{r options, include = FALSE, message = FALSE, warning = FALSE, error = FALSE}
+library(knitr)
+opts_chunk$set(collapse = TRUE)
+
+
+CACHE <- TRUE
+
+```
+
+## 1. Introducción
+
+En este taller aprenderemos sobre el uso del formato **R Markdown**, el cual permite integrar código en la generación de **informes** sin la necesidad de importar gráficas o crear tablas manualmente. De esta manera, el formato RMarkdown facilita la generación automática, actualización y redacción de informes técnicos al combinar la sintaxis del formato Markdown con código en R incrustado en el documento. 
+
+### 1.1. Objetivos
+
+-   Reconocer la importancia de generar informes en RMarkdown
+
+-   Aprender a utilizar Rmarkdown de forma básica
+
+## 2. ¿Qué es R Markdown?
+
+**R Markdown** es una extensión del formato Markdown que permite combinar texto con código R incrustado en el documento. De esta manera, los análisis y visualizaciones generados por medio del código se pueden incorporar de manera natural en el texto.  
+
+R Markdown es ampliamente utilizado por científicos de datos, analistas, investigadores y profesionales que necesitan presentar sus análisis y resultados de manera clara y reproducible. Además, es una herramienta muy valiosa para generar informes automatizados y documentos técnicos interactivos
+
+## 3. Estructura de R Markdown
+
+Un documento de **R Markdown** consta de tres tipos principales de elementos:
+
+-   **Yaml:** Corresponde a especificaciones del estilo del documento, título, fecha, autores, etc.
+
+-   **Texto**: Texto enriquecido con formato y explicaciones.
+
+-   **Chunk**: Bloque de código R en donde se ejecutan y se muestran sus resultados.
+
+![](img/chunk.png)
+
+## 4. Paso a Paso en R Markdown
+
+### **Paso 1. Abrir R Studio desde R project**
+
+De acuerdo a lo revisado en Taller *1. Introducción a R y Rstudio*, es recomendable tener un R project donde quedará alojado el informe de R Markdown.
+
+### **Paso 2. Crear un nuevo archivo R Markdown**
+
+A continuación, siguiendo la ruta **File\>New File\>R Markdown** se crea un archivo de R Markdown definiendo: título, autor(es) y con formato de salida preferido (html, pdf o word)
+
+![](img/CrearRmark.png)
+
+### **Paso 3. Editar el archivo de R Markdown y el código**
+
+Es importante recordar que R Markdown tiene tres secciones, todas editables: yaml, texto y chunk de código.
+
+![](img/chunk.png)
+
+## 5. ¿Cómo editar el texto?
+
+- Para incluir el título de una sección se escribe el símbolo numeral `#` y a continuación el nombre de la sección en una línea única. Para poner subtítulos se utiliza dos símbolos numeral `##`. Para cada subtítulo en la estructura se agrega otro símbolo numeral #.
+
+- Para escribir palabra en **negritas** use dos asteriscos a cada lado `**palabra**`
+
+Paso 3.  Para escribir una palabra en *cursiva* use un asterisco a cada lado `*palabra*`(uno a cada lado)
+
+- Para situar el texto en un bloque aparte, se antecede este texto con el símbolo `>` en una línea única.
+
+## 6. ¿Cómo editar el chunk de código?
+
+Para incluir código en R, es necesario introducir un **chunk** en el documento marcando en la barra de herramientas el icono *+C* de color verde como se muestra en la figura.
+
+![](img/insert_chunk.png){width="132"}
+
+A continuación aparecerá un espacio delimitado por los siguientes símbolos que corresponde al **`chunk:`**
+
+```` ```{r} ````
+
+```` ``` ````
+
+Es importante cargar las librerías a utilizar dentro de un chunk de R. Una vez este chunk haya sido corrido, las librerías se mantendrán cargadas en el ambiente de R y podrán ser utilizadas con normalidad en los chunks subsecuentes.
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+#### **Especificar configuración del chunk**
+
+Dentro del chunk también podemos especificar si queremos que el código aparezca en el impreso del informe o no usando `echo = FALSE` (para que no aparezca) y `echo = TRUE` (para que sí aparezca). De esta manera, se pueden correr líneas de código cuyos resultados serán usados más adelante sin la necesidad de que éstas aparezcan en el documento final.
+
+```{r, echo = FALSE}
+
+```
+
+La siguiente tabla incluye otras opciones que se pueden utilizar para configurar un chunk. En la tabla se muestra que tipo de salidas quedan suprimidas al especificar cada opción como `FALSE`:\
+
+| **Opción**          | **Ejecuta** | **Muestra** | **Output** | **Gráficos** | **Mensajes** | **Advertencias** |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| `eval = FALSE`      | No          |             | No         | No           | No           | No               |
+| `include = FALSE`   |             | No          | No         | No           | No           | No               |
+| `echo = FALSE`      |             | No          |            |              |              |                  |
+| `results = "hide"`  |             |             | No         |              |              |                  |
+| `fig.show = "hide"` |             |             |            | No           |              |                  |
+| `message = FALSE`   |             |             |            |              | No           |                  |
+| `warning = FALSE`   |             |             |            |              |              |                  |
+
+### Hacer tablas en R Markdown
+Para hacer tablas en R Markdown podemos utilizar la función `kable` de la librería _knitr_, como se muestra a continuación: 
+```{r, results = "hide"}
+library(knitr)
+
+dat <- readRDS("data/muestra_covid.RDS")
+
+covid_deptos <- dat %>% group_by(nombre_departamento) %>% summarise (casos = n())
+
+kable(covid_deptos)
+```
+Como resultado, obtenemos la siguiente tabla:
+```{r, echo = FALSE}
+kable(covid_deptos)
+```
+
+### Poner parámetros automatizados en el texto
+
+En un informe también es posible utilizar en el texto valores obtenidos mediante el código. Para ésto, simplemente se debe parametrizar un valor y luego incluirlo en el texto usando su nombre correspondiente.
+
+Por ejemplo, para calcular el total de casos de COVID-19 del sexo femenino en nuestra base de datos dentro de un chunk de R:
+
+```{r}
+total_casos_fem <- nrow(dat %>% filter (sexo == "F"))
+
+```
+
+En el texto debe especificar el parámetro que quiere usando de esta manera \` r total_casos_fem \`.
+
+El total de casos de covid-19 en este informe es `r total_casos_fem`
+
+## 7. Paso final - "Tejer" (generar) el informe
+
+Para "tejer" el informe, es decir generar el informe en un formato específico (HTML, PDF o Word), usted debe dar click en el símbolo "Knit" en la esquina superior derecha del editor de RStudio y seleccionar el formato deseado:
+
+<center>
+![](img/Knitr.png){width="419"} 
+</center>
+
+A continuación debe aparecer el informe final en la presentación que ha seleccionado (`html`, `pdf` o `word`).
+
+## 8. Reto
+
+Utilice parte del código desarrollado en la sección práctica de `ggplot` y con este, genere un informe en `pdf` o en `html`. 
+
+## ¡Nos vemos en el próximo taller!
