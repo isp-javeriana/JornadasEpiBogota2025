@@ -1,6 +1,6 @@
 #  Jornadas Epidemiológicas Bogotá 2025
 
-Este repositorio contiene los materiales para los talleres de formación realizados en el marco de las **Jornadas Epidemiológicas Bogotá 2025**.
+Este repositorio contiene los materiales para los talleres de formación que se emplearán en el marco de las **Jornadas Epidemiológicas Bogotá 2025**.
 
 ---
 
