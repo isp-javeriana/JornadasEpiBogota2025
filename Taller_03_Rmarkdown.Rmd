@@ -1,7 +1,7 @@
 ---
 title: "Taller 03. R Markdown, Epiverse"
 authors: Zulma. Cucunubá
-date: "2025-08-26"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
   pdf_document: default
   html_document:
@@ -34,7 +34,7 @@ En este taller aprenderemos sobre el uso del formato **R Markdown**, el cual per
 - Tema 2: Estructura de R Markdown
 - Tema 3: Paso a Paso en R Markdown
 - Tema 4: ¿Cómo editar el texto?
-- Tema 5: ¿Cómo editar el texto?¿Cómo editar el chunk de código?
+- Tema 5: ¿Cómo editar el chunk de código?
 - Tema 6: Hacer tablas en R Markdown
 - Tema 7: Poner parámetros automatizados en el texto
 - Tema 8: Paso final - “Tejer” (generar) el informe
@@ -108,7 +108,7 @@ Al haber creado tu archivo de R Markdown podrás observar e identificar las dife
 
 
 
-## Tema 5: ¿Cómo editar el texto?¿Cómo editar el chunk de código?
+## Tema 5: ¿Cómo editar el chunk de código?
 
 Para incluir código en R, es necesario introducir un **chunk** en el documento marcando en la barra de herramientas el icono *+C* de color verde como se muestra en la figura.
 

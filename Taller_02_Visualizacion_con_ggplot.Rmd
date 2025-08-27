@@ -1,6 +1,6 @@
 ---
 title: "Taller 02. Visualización de datos con ggplot2"
-date: "2025-08-26"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
   pdf_document: default
   html_document:
