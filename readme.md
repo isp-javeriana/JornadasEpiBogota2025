@@ -15,7 +15,7 @@ Este repositorio contiene los materiales para los talleres de formación que se 
 ## 📚 Talleres incluidos
 
 ### 🔹 Taller 01: Introducción a R y RStudio  
-Conceptos básicos del entorno de trabajo en R y navegación por RStudio.
+Conceptos básicos del entorno de trabajo en R y navegación por RStudio (parte A y B).
 
 ### 🔹 Taller 02: Limpieza de datos (no se usará en el taller del 2025) 
 Importación, exploración y depuración de datos en R.
