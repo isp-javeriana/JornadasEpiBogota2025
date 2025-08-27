@@ -17,13 +17,13 @@ Este repositorio contiene los materiales para los talleres de formación que se 
 ### 🔹 Taller 01: Introducción a R y RStudio  
 Conceptos básicos del entorno de trabajo en R y navegación por RStudio.
 
-### 🔹 Taller 02: Limpieza de datos  
+### 🔹 Taller 02: Limpieza de datos (no se usará en el taller del 2025) 
 Importación, exploración y depuración de datos en R.
 
-### 🔹 Taller 03: Visualización con `ggplot2`  
+### 🔹 Taller 02: Visualización con `ggplot2`  
 Introducción a la gramática de los gráficos y construcción de visualizaciones efectivas.
 
-### 🔹 Taller 04: R Markdown  
+### 🔹 Taller 03: R Markdown  
 Documentación reproducible: combinación de texto, código y visualizaciones.
 
 ---
