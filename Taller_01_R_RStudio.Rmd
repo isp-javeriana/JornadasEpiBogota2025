@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 1. Introducción
 
-R es un lenguaje de programación y un entorno de software utilizado en la práctica estadística y el análisis de datos. R y RStudio son herramientas esenciales para el estudio, análisis y toma de decisiones en salud pública, ya que permiten realizar análisis estadísticos detallados, modelar la propagación de enfermedades, visualizar datos de manera efectiva y automatizar tareas. Estas herramientas facilitan la manipulación y preparación de datos, fomentan la colaboración en proyectos de ciencia de datos, y la toma de decisiones basadas en evidencias. Además, son útiles en la formación y educación en análisis de datos para profesionales de la salud, áreas STEM y toma de decisiones. En este taller aprenderemos a reconocer los distintos elementos de la interfaz de RStudio, estructuras en R y manejo de datos con Tidyverse. Esto sentará las bases fundamentales para adquirir las habilidades necesarias en la programación en R y el análisis de datos.
+R es un lenguaje de programación y un entorno de software utilizado en la práctica estadística y el análisis de datos. R y RStudio son herramientas esenciales para el estudio, análisis y toma de decisiones en salud pública ya que permiten realizar análisis estadísticos detallados, modelar la propagación de enfermedades, visualizar datos de manera efectiva y automatizar tareas. Estas herramientas facilitan la manipulación y preparación de datos, fomentan la colaboración en proyectos de ciencia de datos, y la toma de decisiones basadas en evidencias. Además, son útiles en la formación y educación en análisis de datos para profesionales de la salud, áreas STEM y toma de decisiones. En este taller aprenderemos a reconocer los distintos elementos de la interfaz de RStudio, estructuras en R y manejo de datos con Tidyverse. Esto sentará las bases fundamentales para adquirir las habilidades necesarias en la programación en R y el análisis de datos.
 
 # 2. Objetivos
 
@@ -70,7 +70,7 @@ Para instalar R y RStudio debemos ir a nuestro navegador de confianza. Allí vam
 
 Busca la opción de descarga “download R” y sigue las instrucciones.
 
-Para instalar Rstudio debemos ir a https://posit.co/download/rstudio-desktop/ y buscar donde diga Install RSudio. Si tenemos Windows podemos dar click en el recuadro azul. Si es otro sistema operativo abajo encontraremos una lista con las diferentes opciones. Para instalar, sigue las instrucciones.
+Para instalar Rstudio debemos ir a https://posit.co/download/rstudio-desktop/ y buscar donde diga *Install RSudio*. Si tenemos Windows podemos dar click en el recuadro azul. Si es otro sistema operativo abajo encontraremos una lista con las diferentes opciones. Para instalar, sigue las instrucciones.
 
 <center>
 ![Página web para descargar RStudio](img/descarga_r.png)
@@ -122,20 +122,21 @@ Para crear un Proyecto en R, es importante seguir los siguientes pasos:
 
 (1) Abrir RStudio y, en la esquina superior derecha, seleccionar la pestaña
     **File (Archivo) -\> New Project... (Proyecto Nuevo)**.
+    
 (2) Se desplegará una ventana con encabezado **New Project Wizard: Create Project**, ahora se debe seleccionar **New Directory (Directorio Nuevo)**.
-
-<center>
-![Nuevo proyecto en R](img/new_directory.png)
-</center>
 
 (3) En la ventana **Project Type**, se debe seleccionar **New Project -\> Create New Project**. En la casilla **Directory Name (Nombre del Directorio)** coloque el nombre deseado para su proyecto (Ej: "`introR`").
 
 (4) Hacemos clic en el botón **Browse...** para buscar la ubicación dentro de nuestro computador donde deseamos guardar el proyecto.
 
+<center>
+![Nuevo proyecto en R](img/new_directory.png){width="460"}
+</center>
+
 (5) Creamos una carpeta con el mismo nombre del proyecto (Ej: "`introR`"), así como las subcarpetas que necesitamos para organizar nuestro trabajo y resultados: datos, scripts y figuras. Al final, el proyecto debería parecerse a esta imagen:
 
 <center>
-![Ambiente en R en un proyecto](img/r_project.png)
+![Ambiente en R en un proyecto](img/r_project.png){width="460"}
 </center>
 
 
@@ -167,6 +168,7 @@ Los operadores herramientas matemáticas que nos permiten realizar diferentes ta
 ##### 5.2.3.  Operadores booleanos `(& (and), | (or), ! (not))`
 
 ##### 5.2.4. Operadores de asignación 
+<br>
 
 `<-` Este es un operador común en R para asignar un determinado valor a una variable y el alcance está dentro de la función y también fuera de ella.
 
@@ -215,7 +217,7 @@ Nota: El uso del símbolo `#` permite comentar el código, es decir poner notas 
 
 Imaginemos un `data.frame` como una tabla con filas y columnas, similar a una hoja de cálculo en Excel. Cada columna representa un tipo de información específica (un vector) o variable (Por ejemplo, la edad, el departamento o el nombre). En este ejemplo, cada fila corresponde al registro de esas variables para un individuo. Es importante tener en cuenta que los `data.frame` (Tabla de datos) están compuestos por vectores cuyas dimensiones deben ser iguales, es decir que todas las columnas deben tener el mismo número de filas. Siguiendo la analogía de Excel, podemos pensar que cada vector es una columna de una hoja de Excel.
 
-Una ventaja de trabajar con `Data.frame` en R en vez de una hoja de excel es que a medida que el tamaño de la tabla va aumentando, en R se puede trabajar más rápido y eficientemente.
+Una ventaja de trabajar con `data.frame` en R en vez de una hoja de excel es que a medida que el tamaño de la tabla va aumentando, en R se puede trabajar más rápido y eficientemente.
 
 Para crear una tabla de datos se debe ejecutar el comando `data.frame()`. Por ejemplo, utilizando los vectores que definimos en la sección anterior:
 
@@ -264,6 +266,10 @@ Por ejemplo, si queremos saber cuántas dosis de vacunas se aplicó Maximo ¿qu�
 datos_vacunas
 ```
 
+<center>
+![Dosis de vacuna de Máximo.](img/vacunas_maximo.png){width=10.0cm}
+</center>
+
 Vemos que Maximo está en la fila 2 y las dosis en la columna 5. Por lo tanto, la intersección de estas dos variables nos dará el número de dosis que tiene Maximo.
 
 ```{r, error = TRUE, eval = TRUE}
@@ -307,7 +313,7 @@ Para importar tablas de datos desde RDS, se puede usar la función
 
 ```{r, eval=FALSE}
 library(readxl)
-covid19 <- readRDS("data/datos_covid.RDS")
+covid19<- read_excel("data/datos_covid.xlsx")
 ```
 
 ### Tema 7: Funciones
@@ -328,12 +334,12 @@ Los componentes básicos de una función son:
 
 La función del IMC es conocida ($peso/(talla^2)$), y sus argumentos son *peso* y *talla*.
 
-Recordemos que en esta fórmula el *peso* debe estar en *kg* y la *talla* en *metros*.
+Recordemos que en esta fórmula el *peso* debe estar en kg y la *talla* en metros.
 
-Para este ejemplo el *input*, o datos de entrada son el *peso* y la variable *talla*, y el *output* sería el índice de masa corporal (IMC). Si tenemos que el *peso* es *50kg* y la *talla 1.5m*, el IMC será igual a *22.2*.
+Para este ejemplo el *input*, o datos de entrada son el *peso* y la variable *talla*, y el *output* sería el índice de masa corporal (IMC). Si tenemos que el *peso* es 50kg y la *talla* 1.5m, el IMC será igual a 22.2.
 
 <center>
-![Esquema de la función.](img/estructura_funcion.png){width=10.0cm}
+![Estructura de una función.](img/estructura_funcion.png){width=10.0cm}
 </center>
 
 (Ilustración adaptada por Maria Paula Forero)
@@ -347,7 +353,7 @@ IMC <- function(peso, talla) { # Aquí van los argumentos o input
  }
 ```
 
-Ahora, utilicemos la función para calcular el IMC de una persona de talla 1.75 cm y peso 80 kg, mediante el siguiente código
+Ahora, utilicemos la función para calcular el IMC de una persona de *talla* 1.75 cm y *peso* 80 kg, mediante el siguiente código
 
 ```{r, eval = TRUE}
 IMC(peso = 80, talla = 1.75)
@@ -369,7 +375,7 @@ En general, una función consiste en una secuencia de instrucciones con el fin d
 
 ### Tema 8. Manipulación de datos con Tidyverse
 
-Para administrar mejor los conjuntos de datos, se recomienda instalar y utilizar el paquete `tidyverse`, el cual carga automáticamente varios paquetes (dplyr, tidyr, tibble, readr, purr, entre otros) que son útiles para la manipulación de datos.
+Para administrar mejor los conjuntos de datos, se recomienda instalar y utilizar el paquete `tidyverse`, el cual carga automáticamente varios paquetes (`dplyr, tidyr, tibble, readr, purr`, entre otros) que son útiles para la manipulación de datos.
 
 ```{r,eval=FALSE,echo=TRUE}
 install.packages('tidyverse')
@@ -385,8 +391,7 @@ A continuación, verá algunas de las funciones más utilizadas de `tidyverse`.
 
 #### 8.1. Operador tubería (pipe)
 
-El operador tubería (pipe function) `%>%` es un operador que se usa continuamente, por lo que es clave para usar Tidyverse y facilita la
-programación. El operador tubería permite al usuario enfatizar una secuencia de acciones en un objeto.
+El operador tubería (pipe function) `%>%` es un operador que se usa continuamente, por lo que es clave para usar Tidyverse y facilita la programación. El operador tubería permite al usuario enfatizar una secuencia de acciones en un objeto.
 
 ![Esquema del operador tubería](img/ImagenPipe.png)
 
@@ -424,20 +429,23 @@ promedio <- numeros %>%  + 1 %>% multiply_by(2) %>%  mean()
 
 
 #### 8.2. Funciones básicas de Tidyverse
+<br>
 
 Del paquete `dyplr`, las funciones más comunes son:
 
--   `glimpse`: utilizado para explorar rápidamente una tabla de datos
--   `summarise`: genera tablas resumen. Reduce las dimensiones de una tabla de datos
--   `group_by`: crea grupos dentro de una tabla de datos. las funciones del `dplyr` manipulan cada grupo por separado y luego combina los resultados
--   `select`: extrae columnas de una tabla de datos
--   `filter`: extrae filas de una tabla de casos
--   `arrange`: ordena filas de una tabla de datos por el valor de una variable particular si es numérico, o por orden alfabético si es un carácter
--   `mutate`: genera una nueva variable
--   `rename`: cambia el nombre de la variable
+-   `glimpse`: utilizado para explorar rápidamente una tabla de datos.
+-   `summarise`: genera tablas resumen. Reduce las dimensiones de una tabla de datos.
+-   `group_by`: crea grupos dentro de una tabla de datos. las funciones del `dplyr` manipulan cada grupo por separado y luego combina los resultados.
+-   `select`: extrae columnas de una tabla de datos.
+-   `filter`: extrae filas de una tabla de casos.
+-   `arrange`: ordena filas de una tabla de datos por el valor de una variable particular si es numérico, o por orden alfabético si es un carácter.
+-   `mutate`: genera una nueva variable.
+-   `rename`: cambia el nombre de la variable.
 
 Otra función que se utiliza continuamente en el análisis de datos es:
--   `unique`: te permite extraer sólo los elementos únicos del conjunto de datos, eliminando las repeticiones
+<br>
+
+-   `unique`: te permite extraer sólo los elementos únicos del conjunto de datos, eliminando las repeticiones.
 
 Veamos en más detalle las funciones más comunes del paquete `dyplr`
 
@@ -445,7 +453,7 @@ Veamos en más detalle las funciones más comunes del paquete `dyplr`
 
 ##### 8.2.1. `glimpse`
 
-Esta función se utiliza para explorar información de los datos como: número de filas (que en este caso sería el número de observaciones o datos de nuestra población), número de columnas y sus nombres (que en este caso serían el número de variables y sus nombres), entre "\< \>" encontrará el tipo de dato (`dbl` para `double`, `chr` para `character`, entre otros) y un breve listado de algunos de los primeros valores de los datos. La función `glimpse` se puede aplicar sobre `dat` mediante el operador tubería como se muestra a continuación:
+Esta función se utiliza para explorar información de los datos como: número de filas (que en este caso sería el número de observaciones o datos de nuestra población), número de columnas y sus nombres (que en este caso serían el número de variables y sus nombres), entre `"\< \>"` encontrará el tipo de dato (`dbl` para `double`, `chr` para `character`, entre otros) y un breve listado de algunos de los primeros valores de los datos. La función `glimpse` se puede aplicar sobre `dat` mediante el operador tubería como se muestra a continuación:
 
 ```{r, error=TRUE, eval = FALSE}
 covid19 %>% glimpse()
@@ -453,7 +461,7 @@ covid19 %>% glimpse()
 
 
 
-##### 8.2.2.`summarise`
+##### 8.2.2. `summarise`
 
 La función `summarise` permite resumir los datos de acuerdo con criterios definidos por funciones que retornan valores que pueden ser de interés. Por ejemplo, para calcular la media de edad y el conteo total de casos:
 
@@ -475,9 +483,9 @@ covid19 %>%
 
 
 
-##### 8.2.4.`select`
+##### 8.2.4. `select`
 
-La función `select` es útil en caso de querer extraer una o varias columnas de un Data.frame. Por ejemplo, se puede extraer la variable `edad` de `dat` mediante el siguiente comando:
+La función `select` es útil en caso de querer extraer una o varias columnas de un `data.frame`. Por ejemplo, se puede extraer la variable `edad` de `dat` mediante el siguiente comando:
 
 ```{r, error=TRUE, eval = FALSE}
 covid19 %>% select(edad) #empleando el nombre de la columna
@@ -486,7 +494,7 @@ covid19 %>% select(c(1,2)) #o su ubicación en los datos
 
 
 
-##### 8.2.5.`filter`
+##### 8.2.5. `filter`
 
 Otra función de gran utilidad es `filter`. Esta se puede usar para seleccionar filas de acuerdo con una o más condiciones lógicas. Por ejemplo, para filtrar los pacientes menores de 28 años:
 
@@ -496,7 +504,7 @@ covid19 %>% filter(edad < 28)
 
 Como puede observar, el resultado contiene todas las variables de la tabla, pero los datos se limitan a aquellos que en edad sean menores de 28 años.
 
-Ahora, filtre por los pacientes de 28 años o menos de sexo femenino. En este caso, al pedir que se incluyan adicionalmente los de 28 años también ya no se emplea unicamente el signo "\<" sino que se lo acompaña del símbolo "=":
+Ahora, filtre por los pacientes de 28 años o menos de sexo femenino. En este caso, al pedir que se incluyan adicionalmente los de 28 años también ya no se emplea unicamente el signo `"\<"` sino que se lo acompaña del símbolo `"="`:
 
 ```{r, error=TRUE, eval = FALSE}
 covid19 %>% glimpse() #Observe como están expresadas las variables también puede usar la función `table()`
@@ -505,7 +513,7 @@ covid19 %>% filter(sexo == "F", edad <= 28) #Ahora sabe como filtrar el sexo
 
 
 
-##### 8.2.6.`arrange`
+##### 8.2.6. `arrange`
 
 Para los casos donde se necesita organizar los datos por una o más variables, se puede emplear la función `arrange`. Por ejemplo, para organizaros datos por edad, o por edad y sexo:
 
@@ -522,7 +530,7 @@ covid19 %>% arrange(desc(edad))
 
 
 
-##### 8.2.7.`mutate`
+##### 8.2.7. `mutate`
 
 Para crear una nueva columna con datos de una ya existente resulta de utilidad la función `mutate`. Esta función requiere el nombre de la columna a crear y de la columna de la que queremos copiar los datos. La columna nueva por configuración predeterminada se ubicará al final de las variables.
 
@@ -533,7 +541,7 @@ covid19 <- covid19 %>% mutate(nombre_departamento = toupper(nombre_departamento)
 
 
 
-##### 8.2.8.`rename`
+##### 8.2.8. `rename`
 
 En caso de que no se desee crear una nueva variable sino renombrar una ya existente, conviene usar la función `rename`. Por ejemplo, cambie el nombre *nombre_departamento* por el nombre *departamento*.
 
@@ -543,7 +551,7 @@ covid19 %>% rename(departamento = nombre_departamento)
 
 
 
-##### 8.2.9.`slice`
+##### 8.2.9. `slice`
 
 Ya se vio previamente cómo seleccionar columnas por medio de la función `select`. En caso de requerir seleccionar filas específicas de un Data.frame, la función `slice` resulta de gran utilidad. Por ejemplo, para seleccionar de la fila 10 a la 15:
 
