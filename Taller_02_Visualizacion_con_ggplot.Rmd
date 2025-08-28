@@ -94,7 +94,6 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-
 Ahora, veremos cada uno de los componentes para realizar gráficos de datos con `ggplot2` a través de un ejercicio práctico. Se requiere una tabla de datos (una estructura con filas y columnas) para poder ser usada en la estética de los gráficos. Previo al uso de `ggplot2`, suele ser necesario realizar un proceso de limpieza y organización de los datos. Para este ejercicio práctico usaremos una base de datos limpia, que nos permita hacer las visualizaciones sin la necesidad de pre-procesar los datos.
 
 La tabla de datos para este ejercicio puedes encontrarla en: https://github.com/TRACE-LAC/TRACE-LAC-data/blob/main/otros/muestra_covid.RDS?raw=true
