@@ -26,8 +26,8 @@ En este taller aprenderemos el uso del paquete `ggplot2`, un paquete de R basado
 - Realizar gráficos básicos con la estructura de `ggplot2`
 
 
-
 # 3. Tabla de contenido
+
 - Tema 1: Visualización
 - Tema 2: Estética (Aesthetics)
 - Tema 3: Geometría (Geometry)
@@ -261,7 +261,7 @@ ggplot(data = covid19_depto, aes(x = nombre_departamento, y = casos)) +
   coord_flip()
 ```
 
-Si queremos ordenar los paises por el número de casos, podemos utilizar el comando reorderen el eje donde está el departamento. La función reorder tiene dos argumentos: el primero es la variable a ordenar y el segundo es la variable que otorga el orden. En este caso sería `reorder(nombre_departamento, -casos)` si queremos ordenar de menor a mayor. El código sería el siguiente:
+Si queremos ordenar los departamentos por el número de casos, podemos utilizar el comando reorderen el eje donde está el departamento. La función reorder tiene dos argumentos: el primero es la variable a ordenar y el segundo es la variable que otorga el orden. En este caso sería `reorder(nombre_departamento, -casos)` si queremos ordenar de menor a mayor. El código sería el siguiente:
 
 ```{r, eval=FALSE}
 ggplot(covid19_depto, 
@@ -318,9 +318,33 @@ A continuación, veremos algunos de los diferentes tipos de escalas disponibles 
 
 A continuación, veremos algunos ejemplos de cómo usar la escala en `ggplot2` con el `data.frame` `covid19`.
 
+### Ejemplo 5. Gráfico de conteo de casos por sexo aplicando diferentes escalas
 
+```{r eval=FALSE}
+ggplot(data = covid19) +
+  geom_bar(aes(x = sexo, fill = sexo, alpha = sexo)) + 
+  scale_x_discrete(name = "Sexo de los casos") +            # escala discreta en X
+  scale_y_continuous(name = "Número de casos",              # escala continua en Y
+                     breaks = seq(0, 6000, 1000), 
+                     limits = c(0, 6000)) +
+  scale_fill_brewer(palette = "Set2", name = "Categoría") + # escala de color discreta
+  scale_alpha_manual(values = c(0.6, 1), guide = "none") # escala de transparencia
+```
 
-### Ejemplo 5. Gráfico de mapa de calor con escala logarítmica *`scale_y_log10()`*
+La visualización que generamos es la siguiente:
+
+```{r, echo = FALSE, fig.align = 'center', out.width = '80%'}
+ggplot(data = covid19) +
+  geom_bar(aes(x = sexo, fill = sexo, alpha = sexo)) + 
+  scale_x_discrete(name = "Sexo de los casos") +            # escala discreta en X
+  scale_y_continuous(name = "Número de casos",              # escala continua en Y
+                     breaks = seq(0, 6000, 1000), 
+                     limits = c(0, 6000)) +
+  scale_fill_brewer(palette = "Set2", name = "Categoría") + # escala de color discreta
+  scale_alpha_manual(values = c(0.6, 1), guide = "none") # escala de transparencia
+```
+
+### Ejemplo 6. Gráfico de mapa de calor con escala logarítmica *`scale_y_log10()`*
 
 Usamos exáctamente el mismo ejemplo anterior, pero en este caso al final agregamos la escala logarítmica *`scale_y_log10()`*
 
@@ -341,7 +365,7 @@ Las Facetas `(Facets)` en la gramática de los gráficos son una forma de dividi
 
 
 
-### Ejemplo 6. Gráfico con facet wrap 
+### Ejemplo 7. Gráfico con facet wrap 
 
 Primero vamos a preparar los datos en una tabla de datos que permita contar el número de casos por sexo:
 
@@ -381,7 +405,7 @@ Usando la misma gráfica anterior, comparemos dos temas:
 `theme_classic()` y `theme_dark()`. Describa en sus propias palabras las
 diferencias
 
-**Ejemplo 6. Usando theme classic**
+**Ejemplo 8. Usando theme classic**
 
 Para usar el tema clásico tenemos:
 
@@ -392,7 +416,7 @@ ggplot(data = covid19_sexo, aes(x = edad, y = casos)) +
   theme_classic()
 ```
 
-**Ejemplo 7. Usando theme classic**
+**Ejemplo 9. Usando theme classic**
 
 ```{r warning=FALSE}
 ggplot(data = covid19_sexo, aes(x = edad, y = casos)) +
@@ -405,7 +429,7 @@ Para revisar la lista de `theme()` que tiene disponible `ggplot2`, puede consult
 
 Finalmente, veamos un ejemplo de como modificar los themes manualmente.
 
-**Ejemplo 8. Cambiando títulos, subtítulos y ejes**
+**Ejemplo 10. Cambiando títulos, subtítulos y ejes**
 
 Podemos usar comandos como `xlab`, `ylab` para cambiar los nombres de los ejes. Igualmente, comandos como `title` y `subtitle`.
 
