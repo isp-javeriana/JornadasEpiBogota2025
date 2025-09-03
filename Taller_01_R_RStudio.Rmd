@@ -301,19 +301,17 @@ Para importar una tabla de datos de diferentes fuentes necesitamos emplear difer
 
 ##### 6.3.2. Abrir y explorar una tabla de datos importados de Excel
 
-Este es el conjunto de datos para esta práctica:
-[datos_covid.xlsx](https://raw.githubusercontent.com/TRACE-LAC/TRACE-LAC-data/main/datos_covid.xlsx):
+Este es el conjunto de datos para esta práctica: 
+[datos_covid.xlsx](https://raw.githubusercontent.com/isp-javeriana/JornadasEpiBogota2025/main/data/datos_covid.xlsx):
 
-Dentro del directorio en el que está trabajando actualmente, cree una
-carpeta llamada *data*. Guarde la tabla de datos descargado en la
-carpeta *data* que acaba de crear.
+Dentro del directorio en el que está trabajando actualmente, cree unacarpeta llamada *data*. Guarde la tabla de datos descargado en la carpeta *data* que acaba de crear.
 
-Para importar tablas de datos desde RDS, se puede usar la función
-`read_excel`, del paquete `readxl`:
+Para importar tablas de datos desde R, se puede usar la función `read_excel`, del paquete `readxl`:
 
 ```{r, eval=FALSE}
 library(readxl)
 covid19<- read_excel("data/datos_covid.xlsx")
+
 ```
 
 ### Tema 7: Funciones
@@ -587,12 +585,12 @@ Como puede notar, el resultado es idéntico. Sin embargo, es preferible usar el 
 
 ### 9. Reto
 
-Esta vez se cargará un tipo diferente de datos, estos los puede encontrar en el enlace <https://github.com/TRACE-LAC/TRACE-LAC-data/blob/main/datos_covid.RDS?raw=true>.
+Esta vez se cargará un tipo diferente de datos, estos los puede encontrar en el enlace <https://github.com/isp-javeriana/JornadasEpiBogota2025/blob/main/data/datos_covid.RDS?raw=true>.
 Los datos pueden ser cargados desde el computador o desde una ubicación en internet. Para este ejercicio cargue la base de datos datos_covid.RDS directamente desde internet con los comandos:
 
 
 ```{r, error=TRUE, eval = FALSE}
-url <- "https://github.com/TRACE-LAC/TRACE-LAC-data/blob/main/datos_covid.RDS?raw=true"
+url <- "https://github.com/isp-javeriana/JornadasEpiBogota2025/blob/main/data/datos_covid.RDS?raw=true"
 
 covid19 <- readr::read_rds(url)
 ```

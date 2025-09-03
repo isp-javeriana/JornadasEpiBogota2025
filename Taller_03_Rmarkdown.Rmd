@@ -172,7 +172,7 @@ Para hacer tablas en R Markdown podemos utilizar la función `kable` de la libre
 
 Para esta práctica es importante haber realizado la Unidad de Introducción a la visualización de datos en R con `ggplot2` y tener disponibles los materiales disponibles en el computador.
 
-La tabla de datos para esta práctica será la misma de la Unidad de Introducción a la visualización de datos en R con `ggplot2`. Puedes encontrarla en: https://github.com/TRACE-LAC/TRACE-LAC-data/blob/main/otros/muestra_covid.RDS?raw=true
+La tabla de datos para esta práctica será la misma de la Unidad de Introducción a la visualización de datos en R con `ggplot2`. Puedes encontrarla en: https://github.com/isp-javeriana/JornadasEpiBogota2025/blob/main/data/muestra_covid.RDS?raw=true
 
 
 ```{r, results = "hide"}
