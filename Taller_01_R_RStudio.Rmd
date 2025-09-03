@@ -1,6 +1,5 @@
 ---
 title: "Introducción a R y Rstudio"
-subtitle: "Parte 1"
 authors: ["Zulma M. Cucunuba","José M. Velasco-España","Andree Valle-Campos"]
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
