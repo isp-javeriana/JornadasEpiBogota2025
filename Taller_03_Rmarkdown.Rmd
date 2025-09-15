@@ -80,22 +80,14 @@ Sigue los pasos, que también pueden verse en la imagen, y crea tu archivo R Mar
 ![](img/CrearRmark.png)
 </center>
 
-### **Paso 3. Editar el archivo de R Markdown y el código**
-
-Es importante recordar que R Markdown tiene tres secciones, todas editables: Yaml, Texto y Chunk de código.
-
-Al haber creado tu archivo de R Markdown podrás observar e identificar las diferentes secciones que se muestran en la imagen.
-
-![](img/chunk.png)
 
 ## Tema 4: ¿Cómo editar el texto?
 
-- Para incluir el título de una sección se escribe el símbolo numeral # y a continuación el nombre de la sección en una línea única.
+- Para incluir el título de una sección se escribe el símbolo numeral #, dejar un espacio y poner el nombre de la sección en una línea única.
 
 - Para poner subtítulos se utiliza dos símbolos numeral ##.
 
-- Para cada subtítulo en la estructura se agrega otro símbolo numeral
- ## 1.
+- Para cada subtítulo en la estructura se agrega otro símbolo numeral ## 1.
 
 - Para escribir palabra en **negritas** use dos asteriscos a cada lado `**palabra**`
 
@@ -103,8 +95,10 @@ Al haber creado tu archivo de R Markdown podrás observar e identificar las dife
 
 - Para situar el texto en un bloque aparte, se antecede este texto con el símbolo `>` en una línea única.
 
+Ejemplo: En el Tema 2 se colocó un título y un subtítulo en la sección de Texto, que se visualizará en el documento de la siguiente manera:
 
 
+![](img/titulo_chunck.png){width="450"}
 
 
 
@@ -112,7 +106,9 @@ Al haber creado tu archivo de R Markdown podrás observar e identificar las dife
 
 Para incluir código en R, es necesario introducir un **chunk** en el documento marcando en la barra de herramientas el icono *+C* de color verde como se muestra en la figura.
 
+
 ![](img/insert_chunk.png){width="132"}
+
 
 Al dar click en este ícono, aparecerá un espacio delimitado por los siguientes símbolos que corresponde al **`chunk:`**
 
@@ -120,12 +116,13 @@ Al dar click en este ícono, aparecerá un espacio delimitado por los siguientes
 
 ```` ``` ````
 
-Luego que hayas creado el chunk debemos cargar las librerías para esta práctica. En el chunk cargamos las librerías a utilizar en R. En este caso, necesitaremos dos
+Luego que hayas creado el chunk debemos cargar las librerías para esta práctica. En el chunk cargamos las librerías a utilizar en R. En este caso, necesitaremos las librerías **tidyverse** y **knitr**:
 
-```{r}
+```{r, eval=FALSE}
 library(tidyverse)
 library(knitr)
 ```
+
 
 Ahora debemos correr el Chunk dando click en el ícono de `“Run”` y seleccionando el Chunk que queremos correr.
 
@@ -135,18 +132,25 @@ Otra opción es dar click al ícono de play verde que se encuentra en la parte s
 
 ![](img/correr_chunk2.png){width="400"}
 
+Al ejecutar el comando, en el documento se verá lo siguiente: 
+
+
+```{r, eval=TRUE, message=TRUE, warning=TRUE}
+library(tidyverse)
+library(knitr)
+```
 
 ### Especificar configuración del chunk
 
 Dentro del *chunk* también podemos especificar si queremos que el código aparezca en el impreso del informe o no usando `echo = FALSE` (para que no aparezca) y `echo = TRUE` (para mostrarlo).
 
-La siguiente tabla incluye otras opciones que se pueden utilizar para configurar un *chunk*. En la tabla se muestra que tipo de salidas quedan suprimidas al especificar cada opción como `FALSE`:
 
-```{r, echo = FALSE}
+```{r, echo = TRUE}
 
 ```
 
-La siguiente tabla incluye otras opciones que se pueden utilizar para configurar un chunk. En la tabla se muestra que tipo de salidas quedan suprimidas al especificar cada opción como `FALSE`:\
+Se aconseja colocar un nombre al chunk, por ejemplo, librerias, y especificar lo que se desea o no se desea que aparezca en el documento final, haciendo uso de las funciones que se muestran en la siguiente tabla. La tabla muestra el tipo de salidas que quedan suprimidas al especificar las opciones `eval`, `include`, `echo`, `message` y `warning` como `FALSE`, y especificando las opciones results y `fig.show` como `“hide”`. 
+
 
 | **Opción**          | **Ejecuta** | **Muestra** | **Output** | **Gráficos** | **Mensajes** | **Advertencias** |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
@@ -159,36 +163,100 @@ La siguiente tabla incluye otras opciones que se pueden utilizar para configurar
 | `warning = FALSE`   |             |             |            |              |              |                  |
 
 
-Por ejemplo, en nuestra práctica especificaremos que se ejecute el código, como se muestra aquí.
+A continuación, una descripción de cada una de las opciones del chunk:
 
-```{r, eval = TRUE}
+-	**eval** decide si el chunk se ejecuta `(=TRUE)` o no `(= FALSE)`. Si se desea que el script aparezca en el documento, se debe especificar la opción `echo=TRUE`. 
 
+-	**echo** decide si se muestra `(=TRUE)` o no se muestra `(= FALSE)` el script en el documento. Con la opción `echo=FALSE` no se muestra el script pero si los resultados, gráficos, mensajes o advertencias. 
+
+-	**include** decide si lo que se ejecuta se incluye `(=TRUE)` o no `(=FALSE)` en el documento. Sirve para preparar datos, cargar paquetes o definir funciones que se usarán después.
+
+-	**message** decide si se muestran `(=TRUE)` o no se muestran `(= FALSE)` dentro del documento los mensajes de alerta. Por ejemplo, al cargar tidyverse se listan versiones y conflictos, así que si no deseamos que aparezcan en el documento, se debería especificar message=FALSE.
+
+-	**warning** decide si se muestran `(=TRUE)` o no `(= FALSE)` las advertencias (warnings) que produce el código; por ejempo, NaNs produced. Es decir, se ejecuta el chunk y se ven los resultados, pero no las advertencias.
+
+-	**results** controla cómo se muestra la salida de texto. La opción por defecto es `="markup"` (muestra la salida como texto normal), pero hay otras opciones: `="hide"` (ejecuta el chunk, pero oculta salidas de texto (ej. summary(), print()); no oculta gráficos, mensajes ni advertencias),` ="hold"` (retiene todas las salidas del chunk y las muestra juntas al final en lugar de intercalarlas), `="asis"` (interpreta la salida como código Markdown o LaTeX crudo, y es útil para imprimir tablas limpias con knitr::kable() para que visualmente se ven mejor).
+
+-	**fig.show** controla cómo se muestran las figuras (gráficos) en el documento. La opción por defecto es `="asis"` (muestra las figuras a medida que se generan). Otras opciones son: `="hold"` (retiene todas las figuras del chunk y las muestra juntas al final del chunk), `="hide"` (ejecuta el chunk, pero no muestra las figuras en el documento).
+
+
+Los valores por defecto del chunk son: 
+`eval = TRUE`,
+`echo = TRUE`,
+`include = TRUE`,
+`message = TRUE`,
+`warning = TRUE`,
+`results = "markup"`, 
+`fig.show = "asis"`
+
+
+En nuestro ejemplo, si no queremos que en el documento aparezcan mensajes de alerta al cargar las librerías, entonces adicionamos `message=FALSE`:
+
+![](img/resultado_chunk.png){width="550"}
+
+Se visualizará en el documento así:
+
+```{r}
+library(tidyverse)
+library(knitr)
 ```
+
+
+
+Si no queremos que el script aparezca dentro del documento, sino solamente que lo ejecute, entonces se adicionaría la opción echo=FALSE:
+
+![](img/resultado_chunk2.png){width="550"}
+
+
+
 
 
 ## Tema 6: Hacer tablas en R Markdown
 
-Para hacer tablas en R Markdown podemos utilizar la función `kable` de la librería _knitr_, como se muestra a continuación.
+Para hacer tablas en R Markdown podemos utilizar la función `kable` de la librería _knitr_, como se muestra a continuación. Para esta práctica es importante haber realizado la Unidad de Introducción a la visualización de datos en R con ggplot2 y tener disponibles los materiales en el computador.  La tabla de datos a utilizar se encuentra en: 
+https://github.com/isp-javeriana/JornadasEpiBogota2025/blob/main/data/muestra_covid.RDS?raw=true
 
-Para esta práctica es importante haber realizado la Unidad de Introducción a la visualización de datos en R con `ggplot2` y tener disponibles los materiales disponibles en el computador.
-
-La tabla de datos para esta práctica será la misma de la Unidad de Introducción a la visualización de datos en R con `ggplot2`. Puedes encontrarla en: https://github.com/isp-javeriana/JornadasEpiBogota2025/blob/main/data/muestra_covid.RDS?raw=true
-
+Con esta base de datos vamos a generar una tabla que muestre el número de casos por departamento. Usando la función kable, la tabla se visualizará en el documento final. 
 
 ```{r, results = "hide"}
 library(knitr)
 
 dat <- readRDS("data/muestra_covid.RDS")
 
-covid_deptos <- dat %>% group_by(nombre_departamento) %>% summarise (casos = n())
+covid_deptos <- dat %>% 
+  group_by(nombre_departamento) %>% 
+  summarise (casos = n())
 
 kable(covid_deptos)
 ```
 
-Como resultado, obtenemos la siguiente tabla:
+
+Para que no aparezca el script sino solo la tabla, entonces especifica `echo=FALSE`. Puedes incluir igualmente (recomendable) `message=FALSE` y `warning=FALSE` para que no muestre ni mensajes de alerta ni advertencias.  Adicionalmente, puedes incluir un texto antes de la tabla, como: “La siguiente tabla muestra el número de casos por departamento”. En este caso el texto **número de casos** queda en negrilla porque tiene doble asterisco a cada lado y *departamento queda* en cursiva porque tiene un asterisco a cada lado, como se muestra a continuación: 
+
+![](img/tabla_chunk.png){width="600"}
+
+En el documento se visualizará de la siguiente forma:
+
+>La siguiente tabla muestra el **Número de casos** por *departamento*.
+
 ```{r, echo = FALSE}
 kable(covid_deptos)
 ```
+
+
+Incluya ahora el gráfico de barras correspondiente:
+
+```{r}
+library(ggplot2)
+ggplot(covid_deptos,
+       aes(x = reorder(nombre_departamento, -casos), y = casos))+
+  geom_bar(stat = "identity")+
+  coord_flip()
+```
+
+
+Si solo quiere que aparezca el gráfico sin el script, agrega `echo=FALSE`. Por el contrario, si desea ejecutar el chunk, pero solamente mostrar el script y no el gráfico, especifica `fig.show=”hide”`.
+
 
 
 
@@ -198,19 +266,20 @@ En un reporte también es posible combinar código y texto, utilizando los resul
 
 Por ejemplo, para calcular el total de casos de COVID-19 de sexo femenino en nuestro conjunto de datos de datos datdentro de un chunk de R haríamos lo siguiente:
 
-```{r}
+```{r setup, include=FALSE}
 total_casos_fem <- nrow(dat %>% filter (sexo == "F"))
 
 ```
 
 Ahora, si queremos incluir este resultado en el texto del reporte, debemos especificar el parámetro que queremos usar de esta manera ` r total_casos_fem `, y por ejemplo escribir directamente como texto:
 
-El total de casos de sexo femenino es ` r total_casos_fem`
+El total de casos de sexo femenino es ` r total_casos_fem` que visualizaría:
 
-```{r, echo=FALSE}
-nrow(dat %>% filter (sexo == "F"))
+El total de casos de sexo femenino es `r total_casos_fem`
 
-```
+
+
+Recuerde que, si no desea que se vea la programación (script), solamente debe especificar `echo=FALSE` en: ````{r totcasosfem, echo=FALSE}`
 
 
 
