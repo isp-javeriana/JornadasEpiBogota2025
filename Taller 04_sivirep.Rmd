@@ -1,0 +1,237 @@
+---
+title: "Taller 04 SIVIREP"
+authors: Jennifer Murillo
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: null
+  word_document: default
+licenses: CC-BY
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Introducción
+América Latina ha progresado en la calidad de sus sistemas de notificación y vigilancia epidemiológica. En particular, Colombia ha mejorado a lo largo de los años la calidad, la accesibilidad y la transparencia de su sistema oficial de vigilancia epidemiológica, SIVIGILA. Este sistema está regulado por el Instituto Nacional de Salud de Colombia y es operado por miles de trabajadores de la salud en las secretarías de salud locales, hospitales y unidades primarias generadoras de datos.
+
+Sin embargo, todavía existen desafíos, especialmente a nivel local, en cuanto a la oportunidad y la calidad del análisis epidemiológico y de los informes epidemiológicos. Estas tareas pueden requerir una gran cantidad de trabajo manual debido a limitaciones en el entrenamiento para el análisis de datos, el tiempo que se requiere invertir, la tecnología y la calidad del acceso a internet en algunas regiones de Colombia.
+
+El objetivo de sivirep es proporcionar un conjunto de herramientas para:
+
+1. Descargar, preprocesar y preparar los datos de SIVIGILA para su posterior análisis.
+2. Generar informes epidemiológicos automatizados adaptables al contexto.
+3. Proporcionar retroalimentación sobre el sistema de vigilancia al proveedor de la fuente de datos.
+
+Los contribuyentes del paquete son:
+
+**Autores:** Geraldine Gómez-Millán, Zulma M. Cucunubá, Jennifer A. Mendez-Romero y Claudia Huguett-Aragón
+
+**Contribuyentes:** Hugo Gruson, Juanita Romero-Garcés, Jaime A. Pavlich-Mariscal, Andrés Moreno, Miguel Gámez, Laura Gómez-Bermeo, Johan Calderón, Lady Flórez-Tapiero, Verónica Tangarife-Arredondo y Gerard Alarcon
+
+Más información en la página web: **https://epiverse-trace.github.io/sivirep/**
+
+## 2. Objetivos
+- Conocer el paquete `sivirep`.
+- Identificar la plantilla: reporte básico de `sivirep` para generar un informe epidemiológico.
+- Hacer uso de `sivirep` para el análisis de uno de los eventos en salud de notificación obligatoria del SIVIGILA.
+
+
+
+# 3. Tabla de contenido
+- Tema 1: Instalación
+- Tema 2: Inicio y descarga de datos
+- Tema 3: Reporte automatizado
+
+
+# 4. Temas
+
+
+## Tema 1: Instalación
+
+Inicia creando un proyecto de R y un script dentro de este.
+En el script creando en el paso anterior ejecutrar los siguientes comandos para importar `sivirep`
+
+Instalar el paquete `pak` mediante la siguiente linea de código:
+```{r, eval = FALSE}
+install.packages("pak")
+```
+
+Instalar el paquete `sivirep` desde GitHub con el siguiente comando:
+```{r, eval = FALSE}
+pak::pak("epiverse-trace/sivirep")
+```
+
+Esta opción aparecerá únicamente cuando los paquetes que `sivirep` usa tienen una versión más reciente. Se debe escribir en la consola `y`.
+```{r, eval = FALSE}
+install.packages("sivirep")
+```
+
+Una vez cargado, lo siguiente es cargar el paquete `sivirep`:
+```{r, eval = FALSE}
+library(sivirep)
+```
+
+Instalación del paquete `tinytex` para generar un reporte en PDF 
+```{r, eval = FALSE}
+tinytex::install_tinytex()
+
+```
+
+
+
+
+
+
+
+
+## Tema 2: Inicio y descarga de datos
+
+Una vez instalado:
+
+1. Revise la lista de eventos mediante la función `list_events()` y los años disponibles para su importación
+
+```{r, eval = FALSE}
+lista_eventos <- list_events()
+view(lista_eventos)
+```
+
+Esta lista tambien se puede consultar en:**https://epiverse-trace.github.io/sivirep/articles/resources.html#enfermedades-y-a%C3%B1os-disponibles-para-su-descarga**
+
+
+                 
+2. Elija un evento de interés e inicie la importación de los datos básicos de las fichas del SIVIGILA mediante el comando `import_data_event()`. Para este ejemplo se elije chagas, el año 2023 y se guardan los datos importados en el elemento llamado `datos_chagas`:
+
+```{r, eval = FALSE}
+datos_chagas<-import_data_event(nombre_event = "CHAGAS",
+                               years = 2023,
+                               cache = TRUE)
+```
+**Nota:** si desea descargar más de un año use en el parámetro `year` como un vector (según lo visto en el Taller 01 de Introducción a R studio). Por ejemplo si nos interesa el período de 2020 a 2023, dentro de la función `import_data_event()` reemplace `year =2023`, por `years=c(2020:2023)`. 
+
+3. Para exportar los datos obtenidos, recuerde crear primero su carpeta de "datos" dentro de su proyecto. Luego elija el formato en que quiere guardarlos y cargue el paquete correspondiente, según lo visto en el Taller 01 de Introducción a R studio. Por ejemplo:
+
+```{r, eval = FALSE}
+#En formato delimitado por comás (.csv):
+write.csv(datos_chagas, file = "datos/datos_chagas.csv", row.names = FALSE)
+
+#En formato excel (.xlsx):
+library(openxlsx) #Librería necesaria para escribir archivos en este formato
+write.xlsx(datos_chagas, file = "datos/datos_chagas.xlsx", row.names = FALSE)
+```
+
+
+
+## Tema 3: Reporte automatizado
+
+Actualmente, `sivirep` provee una plantilla de reporte llamada `Reporte Evento {sivirep}`, la cual recibe los siguientes parámetros de entrada: el nombre de la enfermedad, el año, el nombre del país, el nombre del departamento (opcional) y el nombre del municipio (opcional) para generar un reporte básico de forma automática con los datos de la fuente de SIVIGILA.
+
+Para hacer uso de la plantilla del reporte puedes seguir los siguientes pasos:
+
+1. Abrir RStudio y, en la esquina superior izquierda, seleccionar la pestaña
+    **File (Archivo) -\> New File (Archivo Nuevo)**.
+    
+2. Seleccionar la opçión **-\> R Markdown**.
+
+<center>
+![Creación de un nuevo reporte](img/reporte_rmd.png){width="460"}
+</center>
+
+Una vez abra la ventana de opciones de "New R Markdown (Nuevo R Markdown)" continue con:
+
+3. Seleccione  la opción "From Template" en la columna de opciones al lado izquierdo de la ventana.
+
+4. Verifique que está abriendo la plantilla de sivirep al tener seleccionada la opción de "Template: Reporte Evento {sivirep}".
+
+5. Ponga el nombre deseado para almacenar el archivo en el campo "Name (Nombre)".
+
+6. Elija la ubicación donde desee almacenar el archivo en el campo "Location".
+
+7. Haga clic en el botón "Ok".
+
+
+<center>
+![Plantilla de reporte de sivirep](img/knirt_parametr.png){width="460"}
+</center>
+
+
+
+
+Con esto, se abrira un archivo en formato *.Rmd* que contiene la plantilla de "Reporte Básico", como se observa en la siguiente imagen:
+
+<center>
+![Archivo Rmd del reporte básico](img/reporte_basico.png){width="390"}
+</center>
+
+
+8. Haga clic en la opción `Knit with Parameters` y luego clic en el botón `Knit`.
+
+<center>
+![Knirt con parámetros](img/knirt_parametr2.png){width="390"}
+</center>
+
+
+
+
+Una vez abra la ventana de "Knit with Parameters", entonces:
+
+9. Selecciona la enfermedad (evento en salud de interés), el cual en este ejemplo será: *Chagas*
+10. Ingresamos el año, el cual en este ejemplo será: *2023* 
+11. Selecciona el país: *Colombia*
+12. Selecciona el Departamento (opcional): Si se deja vacío se seleecionan todos los departamentos de Colombia por defecto.
+13. Selecciona el Municipio (opcional): Si se deja vacío se seleecionan todos los municipios de Colombia por defecto.
+14. Hacemos clic en el botón `Knit`. Espera unos segundos mientras el reporte es renderizado.
+
+
+<center>
+![Parámetros del reporte básico](img/parametros_bas.png){width="390"}
+</center>
+
+
+Tambien, en la parte inferior de la misma ventana de "Knit with Parameters" encontrará las opciones de indicadores y gráficos básicos que genera el reporte, los cuales puede incluir o excluir marcando o desmarcando las casillas:
+
+<center>
+![Opciones del reporte básico](img/opciones_reporte.png){width="390"}
+</center>
+
+
+¡Y LISTO! Deberás ver un reporte básico como el de la siguiente imagen:
+
+<center>
+![Resultado reporte básico automatizado](img/reportefinal.png){width="500"}
+</center>
+
+
+
+Tambien puede apoyarse en el siguiente video que muestra el paso a paso: **https://www.youtube.com/watch?v=wsgXQKEeg8I**
+
+
+# ¡Felicitaciones! Oficialmente eres un usuario de sivirep
+
+
+# Contribuciones
+
+-   Zulma M. Cucunuba: Versión inicial
+-   Zhian N. Kamvar: Ediciones menores
+-   Kelly A. Charniga: Ediciones menores
+-   José M. Velasco-España: Traducción de Inglés a Español y edición
+-   Andree Valle-Campos: Ediciones menores
+-   Miguel E. Gámez López: Ediciones menores
+-   Nicolás T. Domínguez: Ediciones menores
+-   Jaime A. Pavlich-Mariscal: Edición
+-   Jennifer Murillo: Ediciones menores
+
+Contribuciones son bienvenidas vía [pull
+requests](https://github.com/reconhub/learn/pulls).
+
+
+
+
+# Asuntos legales
+
+**Licencia**: [CC-BY](https://creativecommons.org/licenses/by/3.0/)
+**Copyright**: Zulma M. Cucunuba, 2019
