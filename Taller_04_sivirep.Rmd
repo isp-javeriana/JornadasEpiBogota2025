@@ -117,11 +117,11 @@ datos_chagas<-import_data_event(nombre_event = "CHAGAS",
 
 ```{r, eval = FALSE}
 #En formato delimitado por comás (.csv):
-write.csv(datos_chagas, file = "datos/datos_chagas.csv", row.names = FALSE)
+write.csv(datos_chagas, file = "data/datos_chagas.csv", row.names = FALSE)
 
 #En formato excel (.xlsx):
 library(openxlsx) #Librería necesaria para escribir archivos en este formato
-write.xlsx(datos_chagas, file = "datos/datos_chagas.xlsx", row.names = FALSE)
+write.xlsx(datos_chagas, file = "data/datos_chagas.xlsx", rowNames = FALSE)
 ```
 
 

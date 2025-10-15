@@ -301,9 +301,9 @@ Para importar una tabla de datos de diferentes fuentes necesitamos emplear difer
 ##### 6.3.2. Abrir y explorar una tabla de datos importados de Excel
 
 Este es el conjunto de datos para esta práctica: 
-[datos_covid.xlsx](https://raw.githubusercontent.com/isp-javeriana/JornadasEpiBogota2025/main/data/datos_covid.xlsx):
+[covid_latam.xlsx](https://raw.githubusercontent.com/isp-javeriana/JornadasEpiBogota2025/main/data/covid_latam.xlsx):
 
-Dentro del directorio en el que está trabajando actualmente, cree unacarpeta llamada *data*. Guarde la tabla de datos descargado en la carpeta *data* que acaba de crear.
+Dentro del directorio en el que está trabajando actualmente, cree una carpeta llamada *data*. Guarde la tabla de datos descargado en la carpeta *data* que acaba de crear.
 
 Para importar tablas de datos desde R, se puede usar la función `read_excel`, del paquete `readxl`:
 
