@@ -309,7 +309,7 @@ Para importar tablas de datos desde R, se puede usar la función `read_excel`, d
 
 ```{r, eval=FALSE}
 library(readxl)
-covid19<- read_excel("data/datos_covid.xlsx")
+covid_latam <- read_excel("data/covid_latam.xlsx")
 
 ```
 
@@ -453,7 +453,7 @@ Veamos en más detalle las funciones más comunes del paquete `dyplr`
 Esta función se utiliza para explorar información de los datos como: número de filas (que en este caso sería el número de observaciones o datos de nuestra población), número de columnas y sus nombres (que en este caso serían el número de variables y sus nombres), entre `"\< \>"` encontrará el tipo de dato (`dbl` para `double`, `chr` para `character`, entre otros) y un breve listado de algunos de los primeros valores de los datos. La función `glimpse` se puede aplicar sobre `dat` mediante el operador tubería como se muestra a continuación:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% glimpse()
+covid_latam %>% glimpse()
 ```
 
 
@@ -463,7 +463,7 @@ covid19 %>% glimpse()
 La función `summarise` permite resumir los datos de acuerdo con criterios definidos por funciones que retornan valores que pueden ser de interés. Por ejemplo, para calcular la media de edad y el conteo total de casos:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% summarise(media = mean(edad), numero = n())
+covid_latam %>% summarise(media = mean(edad), numero = n())
 ```
 
 
@@ -473,7 +473,7 @@ covid19 %>% summarise(media = mean(edad), numero = n())
 La función `group_by` no tiene un uso evidente si es empleada sola, dado que ocurre un proceso interno de agrupación de los datos. Pero al ser usada con otras funciones como por ejemplo `summarise` es posible ver su efecto. Por ejemplo, el siguiente comando agrupa los datos por sexo y calcula, para cada grupo, el conteo de casos y su correspondiente media de edad:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% 
+covid_latam %>% 
   group_by(sexo) %>% 
   summarise(numero = n(), media_edad = mean(edad))
 ```
@@ -485,8 +485,8 @@ covid19 %>%
 La función `select` es útil en caso de querer extraer una o varias columnas de un `data.frame`. Por ejemplo, se puede extraer la variable `edad` de `dat` mediante el siguiente comando:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% select(edad) #empleando el nombre de la columna
-covid19 %>% select(c(1,2)) #o su ubicación en los datos
+covid_latam %>% select(edad) #empleando el nombre de la columna
+covid_latam %>% select(c(1,2)) #o su ubicación en los datos
 ```
 
 
@@ -496,7 +496,7 @@ covid19 %>% select(c(1,2)) #o su ubicación en los datos
 Otra función de gran utilidad es `filter`. Esta se puede usar para seleccionar filas de acuerdo con una o más condiciones lógicas. Por ejemplo, para filtrar los pacientes menores de 28 años:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% filter(edad < 28)
+covid_latam %>% filter(edad < 28)
 ```
 
 Como puede observar, el resultado contiene todas las variables de la tabla, pero los datos se limitan a aquellos que en edad sean menores de 28 años.
@@ -504,8 +504,8 @@ Como puede observar, el resultado contiene todas las variables de la tabla, pero
 Ahora, filtre por los pacientes de 28 años o menos de sexo femenino. En este caso, al pedir que se incluyan adicionalmente los de 28 años también ya no se emplea unicamente el signo `"\<"` sino que se lo acompaña del símbolo `"="`:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% glimpse() #Observe como están expresadas las variables también puede usar la función `table()`
-covid19 %>% filter(sexo == "F", edad <= 28) #Ahora sabe como filtrar el sexo
+covid_latam %>% glimpse() #Observe como están expresadas las variables también puede usar la función `table()`
+covid_latam %>% filter(sexo == "femenino", edad <= 28) #Ahora sabe como filtrar el sexo
 ```
 
 
@@ -515,14 +515,14 @@ covid19 %>% filter(sexo == "F", edad <= 28) #Ahora sabe como filtrar el sexo
 Para los casos donde se necesita organizar los datos por una o más variables, se puede emplear la función `arrange`. Por ejemplo, para organizaros datos por edad, o por edad y sexo:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% arrange(edad)
-covid19 %>% arrange(edad,sexo)
+covid_latam %>% arrange(edad)
+covid_latam %>% arrange(edad,sexo)
 ```
 
 Por configuración predeterminada la función organiza los valores de menor a mayor, en caso de querer organizarlos de mayor a menor se puede emplear `desc` al interior de la función `arrange`.
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% arrange(desc(edad))
+covid_latam %>% arrange(desc(edad))
 ```
 
 
@@ -532,8 +532,8 @@ covid19 %>% arrange(desc(edad))
 Para crear una nueva columna con datos de una ya existente resulta de utilidad la función `mutate`. Esta función requiere el nombre de la columna a crear y de la columna de la que queremos copiar los datos. La columna nueva por configuración predeterminada se ubicará al final de las variables.
 
 ```{r, error=TRUE, eval = FALSE}
-unique(covid19$nombre_departamento)
-covid19 <- covid19 %>% mutate(nombre_departamento = toupper(nombre_departamento))
+unique(covid_latam$nombre_del_pais)
+covid_latam <- covid_latam %>% mutate(nombre_del_pais = toupper(nombre_del_pais))
 ```
 
 
@@ -543,7 +543,7 @@ covid19 <- covid19 %>% mutate(nombre_departamento = toupper(nombre_departamento)
 En caso de que no se desee crear una nueva variable sino renombrar una ya existente, conviene usar la función `rename`. Por ejemplo, cambie el nombre *nombre_departamento* por el nombre *departamento*.
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% rename(departamento = nombre_departamento)
+covid_latam <- covid_latam %>% rename(pais = nombre_del_pais)
 ```
 
 
@@ -553,19 +553,19 @@ covid19 %>% rename(departamento = nombre_departamento)
 Ya se vio previamente cómo seleccionar columnas por medio de la función `select`. En caso de requerir seleccionar filas específicas de un Data.frame, la función `slice` resulta de gran utilidad. Por ejemplo, para seleccionar de la fila 10 a la 15:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% slice(10:15)
+covid_latam %>% slice(10:15)
 ```
 
 Alternativamente, en caso de que no se quiera emplear tidyverse, esta acción podría realizarse mediante el siguiente comando:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19[10:15, ]
+covid_latam[10:15, ]
 ```
 
 Sin embargo, usar tidyverse y sus funciones resulta de gran utilidad. Por ejemplo, suponga que necesita obtener los primeros 5 sujetos de la base que tengan edades entre 13 y 14 años por cada sexo. Usando tidyverse, la solución de este problema se vería así:
 
 ```{r, error=TRUE, eval = FALSE}
-covid19 %>% 
+covid_latam %>% 
   group_by(sexo) %>% 
   filter(edad >= 13, edad <=14) %>%
   slice(1:5)
@@ -574,7 +574,7 @@ covid19 %>%
 En caso de uno usar el operador tubería (pipe), el comando anterior se vería así:
 
 ```{r, error=TRUE, eval = FALSE}
-slice(filter(group_by(covid19, sexo),edad >= 13, edad <=14),1:5)
+slice(filter(group_by(covid_latam, sexo),edad >= 13, edad <=14),1:5)
 ```
 
 Como puede notar, el resultado es idéntico. Sin embargo, es preferible usar el operador tubería cuando se aplican varias funciones sucesivamente sobre un objeto porque simplifica la sintaxis del código y, como se puede ver, la lectura del mismo se hace más sencilla. Además, emplear el operador tubería facilita la modificación del proceso en caso de ser necesario.
