@@ -1,0 +1,238 @@
+---
+title: "Introducción a R y Rstudio"
+authors: ["Zulma M. Cucunuba", "Jennifer Murillo","gina Polo", "Valentina de Zubiría"]
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: 
+    self_contained: true
+  word_document: default
+image: null
+licenses: CC-BY
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. Introducción
+
+R es un lenguaje de programación de código abierto, ampliamente utilizado para el análisis de datos, la estadística y la visualización de información. Por su versatilidad, capacidad analítica y disponibilidad gratuita, se ha consolidado como una de las herramientas más utilizadas en investigación, academia y diferentes sectores profesionales.
+
+Por su parte, RStudio es un entorno de desarrollo integrado (IDE) diseñado para facilitar el trabajo con R. Proporciona una interfaz amigable e intuitiva que permite escribir, ejecutar y organizar código, así como visualizar resultados, gestionar archivos y desarrollar proyectos de análisis de manera eficiente.
+
+En el campo de la salud pública, el uso de R y RStudio es especialmente relevante, ya que estas herramientas permiten realizar análisis estadísticos avanzados, procesar grandes volúmenes de información, modelar fenómenos epidemiológicos, visualizar datos de manera efectiva y apoyar la toma de decisiones basada en evidencia. Además, facilitan la reproducibilidad de los análisis y fortalecen las competencias analíticas necesarias para la investigación y la gestión en salud.
+
+Adicionalmente, durante el curso se utilizará SIVIREP, una herramienta desarrollada para apoyar procesos específicos de análisis y vigilancia epidemiológica. Su correcto funcionamiento requiere que R y RStudio estén previamente instalados y configurados.
+
+La presente guía tiene como objetivo orientar, paso a paso, el proceso de instalación y verificación de funcionamiento de R, RStudio y SIVIREP, de manera que cada estudiante pueda realizar la configuración previa a las sesiones de clase de forma autónoma.
+
+En caso de presentar inconvenientes o errores que no puedan resolverse siguiendo esta guía, por favor comunicarse con:
+
+- Gina Polo: gina.polo@javeriana.edu.co
+- Jennifer Murillo: jemurillo@javeriana.edu.co
+
+
+# 3. Tabla de contenido
+- Tema 1: Instalación de R y RStudio
+- Tema 2: Repaso de ambiente de RStudio y configuración de un proyecto en RStudio
+- Tema 3: Instalación de SIVIREP
+
+
+# 4. Temas
+
+## Tema 1:  Instalación de R y RStudio
+
+### Introducción
+
+
+En esta sección se realizará la instalación de las herramientas básicas necesarias para el desarrollo del curso: R y RStudio.
+
+Es importante recordar que, aunque suelen instalarse y utilizarse de manera conjunta, cumplen funciones diferentes:
+
+- R es el lenguaje de programación y el motor computacional encargado de ejecutar los análisis estadísticos y procesar los datos.
+- RStudio es el entorno de desarrollo que proporciona una interfaz gráfica para trabajar con R de forma más organizada, intuitiva y eficiente.
+
+Para garantizar el correcto funcionamiento de las actividades prácticas del curso y de la herramienta SIVIREP, es indispensable instalar ambos programas siguiendo el orden indicado en esta guía:
+
+1. Instalación de R
+2. Instalación de RStudio
+3. Verificación de la instalación
+
+Se recomienda realizar cada paso cuidadosamente y verificar que la instalación haya finalizado correctamente antes de continuar con la siguiente etapa.
+
+
+### Instalación
+Para instalar R y RStudio debemos ir a nuestro navegador de confianza. Allí vamos a buscar r-project, que es la página oficial de R (https://www.r-project.org/). Recordemos que este es un software de uso libre, no hay que hacer ningún pago por su descarga o uso.
+
+<center>
+![Página web para descargar R](img/pagina_r.png)
+</center>
+
+Busca la opción de descarga “download R” y sigue las instrucciones.
+
+Para instalar Rstudio debemos ir a https://posit.co/download/rstudio-desktop/ y buscar donde diga *Install RSudio* (en el lado derecho). Si tenemos Windows podemos dar click en el recuadro azul. Si es otro sistema operativo abajo encontraremos una lista con las diferentes opciones. Para instalar, sigue las instrucciones.
+
+<center>
+![Página web para descargar RStudio](img/descarga_r.png)
+</center>
+
+Recuerda ejecutar el archivo que se descargó siguiendo los pasos. Es recomendable que en el momento de la instalación elijamos la opción de dejar un acceso directo en el escritorio.
+
+Para comprobar que la instalación fue satisfactoria y en general para hacer uso de R y RStudio debemos buscar en la ubicación que hayamos elegido en la instalación donde quedó Rstudio y dar doble clic o clic derecho y abrir. Lo primero que vemos al momento de abrir Rstudio es la siguiente pantalla:
+
+<center>
+![Interfaz de R studio ya instalado](img/instala_r.png)
+</center>
+
+Escribe 2+2 donde aparece el curso y da enter, si te aparece el resultado 4 ¡Está todo listo para empezar!
+
+
+
+## Tema 2: Repaso de ambiente de RStudio y configuración de un proyecto en RStudio
+
+
+### Ambiente de RStudio
+
+La parte visual de RStudio está compuesta por 4 secciones principales:
+
+<center>
+![Ambiente de RStudio](img/ambiente_r.png)
+</center>
+
+1. **Editor (sección superior izquierda):** esta sección es fundamental para la reproducibilidad del código. Este editor permite guardar el código para que sea usado en futuras ocasiones. 
+El código puede ser ejecutado en esta sección posicionando el cursor de texto al final de la línea de código que se ejecutará; otra opción es seleccionando la misma y empleando el comando `Control+Enter` para Windows o `Command+Enter` para Mac.
+
+2. **Entorno (sección superior derecha):** en esta sección se pueden visualizar los objetos y funciones creados o importados en la sección de R. 
+Objetos como vectores, matrices, arreglos, `data frames`, listas, objetos tipo `ggplot`, entre otros.
+
+3. **Consola (sección inferior izquierda):** esta sección es donde se ejecuta el código. No solo se ejecuta el código que escrito en el editor, sino que también el código puede escribirse y ejecutarse aquí directamente presionando `Enter`. Sin embargo, cuando el código se ejecuta directamente en la consola, este no se almacena y cuando se cierra la sesión de R este se pierde.
+
+4. **Visualizador (sección inferior derecha):** en esta sección se pueden visualizar los archivos en “`Files`”, los gráficos en “`Plots`”, los paquetes que ya están instalados en “`Packages`”, la ayuda de R con información de los paquetes y el funcionamiento en “`Help`”, y páginas web en “`Viewer`”.
+
+
+
+
+
+### Configuración de un proyecto en RStudio
+
+Una de las grandes ventajas de usar RStudio es la posibilidad de usar
+los Proyectos en R (R Project)(indicado por un archivo `.Rproj`) lo que permite organizar el espacio de trabajo, el historial y los documentos fuente.
+
+Para crear un Proyecto en R, es importante seguir los siguientes pasos:
+
+(1) Abrir RStudio y, en la esquina superior derecha, seleccionar la pestaña
+    **File (Archivo) -\> New Project... (Proyecto Nuevo)**.
+    
+(2) Se desplegará una ventana con encabezado **New Project Wizard: Create Project**, ahora se debe seleccionar **New Directory (Directorio Nuevo)**.
+
+(3) En la ventana **Project Type**, se debe seleccionar **New Project -\> Create New Project**. En la casilla **Directory Name (Nombre del Directorio)** coloque el nombre deseado para su proyecto (Ej: "`introR`").
+
+(4) Hacemos clic en el botón **Browse...** para buscar la ubicación dentro de nuestro computador donde deseamos guardar el proyecto.
+
+<center>
+![Nuevo proyecto en R](img/new_directory.png){width="360"}
+</center>
+
+(5) Creamos una carpeta con el mismo nombre del proyecto (Ej: "`introR`"), así como las subcarpetas que necesitamos para organizar nuestro trabajo y resultados: datos, scripts y figuras. Al final, el proyecto debería parecerse a esta imagen:
+
+<center>
+![Ambiente en R en un proyecto](img/r_project.png){width="460"}
+</center>
+
+
+## Tema 3. Instalación SIVIREP
+
+### Introducción
+
+
+América Latina ha progresado en la calidad de sus sistemas de notificación y vigilancia epidemiológica. En particular, Colombia ha mejorado a lo largo de los años la calidad, la accesibilidad y la transparencia de su sistema oficial de vigilancia epidemiológica, SIVIGILA. Este sistema está regulado por el Instituto Nacional de Salud de Colombia y es operado por miles de trabajadores de la salud en las secretarías de salud locales, hospitales y unidades primarias generadoras de datos.
+
+Sin embargo, todavía existen desafíos, especialmente a nivel local, en cuanto a la oportunidad y la calidad del análisis epidemiológico y de los informes epidemiológicos. Estas tareas pueden requerir una gran cantidad de trabajo manual debido a limitaciones en el entrenamiento para el análisis de datos, el tiempo que se requiere invertir, la tecnología y la calidad del acceso a internet en algunas regiones de Colombia.
+
+El objetivo de sivirep es proporcionar un conjunto de herramientas para:
+
+1. Descargar, preprocesar y preparar los datos de SIVIGILA para su posterior análisis.
+2. Generar informes epidemiológicos automatizados adaptables al contexto.
+3. Proporcionar retroalimentación sobre el sistema de vigilancia al proveedor de la fuente de datos.
+
+Los contribuyentes del paquete son:
+
+**Autores:** Geraldine Gómez-Millán, Zulma M. Cucunubá, Jennifer A. Mendez-Romero y Claudia Huguett-Aragón
+
+**Contribuyentes:** Hugo Gruson, Juanita Romero-Garcés, Jaime A. Pavlich-Mariscal, Andrés Moreno, Miguel Gámez, Laura Gómez-Bermeo, Johan Calderón, Lady Flórez-Tapiero, Verónica Tangarife-Arredondo y Gerard Alarcon
+
+Más información en la página web: **https://epiverse-trace.github.io/sivirep/**
+
+
+
+### Instalación
+
+
+Inicia creando un proyecto de R y un script dentro de este.
+En el script creado en el paso anterior ejecutar los siguientes comandos para importar `sivirep`:
+
+Instalar el paquete `pak` mediante la siguiente linea de código:
+```{r, eval = FALSE}
+install.packages("pak")
+```
+
+Cargar el paquete recién instalado, corriendo la siguiente linea de código:
+```{r, eval = FALSE}
+library("pak")
+```
+
+Instalar el paquete `sivirep` desde GitHub con el siguiente comando:
+```{r, eval = FALSE}
+pak::pak("epiverse-trace/sivirep")
+```
+
+
+Cargar el paquete `sivirep`:
+```{r, eval = FALSE}
+library(sivirep)
+```
+
+y proseguir con la instalación del paquete `tinytex` para generar un reporte en PDF 
+```{r, eval = FALSE}
+tinytex::install_tinytex()
+
+```
+
+
+Una vez instalado todos los elementos mencionados anteriormente, copiamos y pegamos la siguiente linea de código para verificar que funcione el paquete SIVREP:
+
+```{r, eval = FALSE}
+lista_eventos <- list_events()
+view(lista_eventos)
+```
+
+Esta linea genera la lista de eventos mediante la función `list_events()` y lo almacena en el objeto llamado `lista_eventos`. Si al correr esta linea de código, en el lado superior derecho de su R studio (es decir en la ventana del ambiente) le aparece el objeto `lista_eventos` y puede visualizarlo, es porque el paquete SIVIREP ha sido instalado correctamente.
+
+Esta lista tambien se puede consultar en:**https://epiverse-trace.github.io/sivirep/articles/resources.html#enfermedades-y-a%C3%B1os-disponibles-para-su-descarga**
+
+
+
+
+
+# Contribuciones
+
+-   Zulma M. Cucunuba: Versión inicial
+-   Zhian N. Kamvar: Ediciones menores
+-   Kelly A. Charniga: Ediciones menores
+-   José M. Velasco-España: Traducción de Inglés a Español y edición
+-   Andree Valle-Campos: Ediciones menores
+-   Miguel E. Gámez López: Ediciones menores
+-   Nicolás T. Domínguez: Ediciones menores
+-   Jaime A. Pavlich-Mariscal: Edición
+
+
+
+
+# Asuntos legales
+
+**Licencia**: [CC-BY](https://creativecommons.org/licenses/by/3.0/)
+**Copyright**: Zulma M. Cucunuba, 2019

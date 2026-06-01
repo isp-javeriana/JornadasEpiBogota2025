@@ -54,11 +54,16 @@ Más información en la página web: **https://epiverse-trace.github.io/sivirep/
 ## Tema 1: Instalación
 
 Inicia creando un proyecto de R y un script dentro de este.
-En el script creando en el paso anterior ejecutrar los siguientes comandos para importar `sivirep`
+En el script creado en el paso anterior ejecutar los siguientes comandos para importar (instalar) el paquete `sivirep`.
 
 Instalar el paquete `pak` mediante la siguiente linea de código:
 ```{r, eval = FALSE}
 install.packages("pak")
+```
+
+Cargar el paquete `pak` corriendo la siguiente linea de código:
+```{r, eval = FALSE}
+library(pak)
 ```
 
 Instalar el paquete `sivirep` desde GitHub con el siguiente comando:
@@ -66,12 +71,12 @@ Instalar el paquete `sivirep` desde GitHub con el siguiente comando:
 pak::pak("epiverse-trace/sivirep")
 ```
 
-Esta opción aparecerá únicamente cuando los paquetes que `sivirep` usa tienen una versión más reciente. Se debe escribir en la consola `y`.
+Esta opción aparecerá únicamente cuando los paquetes que `sivirep` tienen una versión más reciente.
 ```{r, eval = FALSE}
 install.packages("sivirep")
 ```
 
-Una vez cargado, lo siguiente es cargar el paquete `sivirep`:
+Cargar el paquete `sivirep`:
 ```{r, eval = FALSE}
 library(sivirep)
 ```

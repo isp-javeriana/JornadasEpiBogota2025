@@ -1,0 +1,58 @@
+---
+title: "Ejercicio Práctico"
+subtitle: " "
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  pdf_document: default
+  html_document: null
+  word_document: default
+licenses: CC-BY
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Introducción
+En este ejercicio aplicará los conocimientos adquiridos durante los talleres de programación básica y generación de reportes mediante el uso de RStudio. A través de este ejercicio, integrará las habilidades desarrolladas en clase para elaborar un reporte a partir de datos reales.
+
+## 2. Objetivo
+Elaborar un reporte epidemiológico que permita aplicar los conocimientos adquiridos a lo largo del curso en el procesamiento, análisis y visualización de datos utilizando RStudio y SIVIREP.
+
+## 3. Descripción del ejercicio
+
+-  Conformar grupos de cuatro (4) personas.
+-  Seleccionar un evento en salud y su período de estudio y descargar los datos mediante SIVIREP para realizar el reporte. La lista de eventos y períodos disponibles puede consultarse en: https://epiverse-trace.github.io/sivirep/articles/resources.html#enfermedades-y-a%C3%B1os-disponibles-para-su-descarga.
+-  Crear un proyecto nuevo en RStudio para el reporte.
+-  Desarrollar y generar el reporte, con tablas, gráficas y demás elementos que consideren necesarios.
+-  Preparar una presentación para socializar los resultados obtenidos.
+
+La socialización se realizará en la siguiente clase (sábado 22 de mayo). Cada grupo contará con diez (10) minutos para exponer su trabajo. Se recomienda apoyar la presentación con diapositivas elaboradas en power point.
+
+## 4. Presentación del reporte
+En este espacio, cada grupo expondrá el reporte desarrollado. Se recomienda incluir una sección introductoria que permita contextualizar al público sobre el evento en salud seleccionado, la fuente de datos utilizada y las herramientas empleadas para la elaboración del análisis.
+
+
+Se sugiere la siguiente estructura para la presentación:
+
+
+1. Título, nombre de los/as estudiantes y fecha.
+2. Introducción (contexto general del evento en salud seleccionado).
+3. Objetivos.
+4. Metodología: fuente de datos, período analizado y procedimientos realizados.
+5. Resultados: principales hallazgos, tablas y visualizaciones.
+6. Conclusiones y recomendaciones.
+
+
+Al finalizar cada presentación, se dispondrá de cinco (5) minutos para preguntas, comentarios y retroalimentación por parte de los moderadores y participantes.
+
+
+## Sobre este documento
+
+### Asuntos legales
+
+**Licencia**: [CC-BY](https://creativecommons.org/licenses/by/3.0/)
+**Copyright**: Gina Polo Infante, 2025

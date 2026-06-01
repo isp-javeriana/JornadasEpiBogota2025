@@ -1,5 +1,5 @@
 ---
-title: "Introducción a R y Rstudio"
+title: "Instalación de R, Rstudio y SIVIREP"
 authors: ["Zulma M. Cucunuba","José M. Velasco-España","Andree Valle-Campos"]
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
@@ -17,6 +17,27 @@ editor_options:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# 1. Introducción
+
+R es un lenguaje de programación y un entorno de software utilizado en la práctica estadística y el análisis de datos. R y RStudio son herramientas esenciales para el estudio, análisis y toma de decisiones en salud pública ya que permiten realizar análisis estadísticos detallados, modelar la propagación de enfermedades, visualizar datos de manera efectiva y automatizar tareas. Estas herramientas facilitan la manipulación y preparación de datos, fomentan la colaboración en proyectos de ciencia de datos, y la toma de decisiones basadas en evidencias. Además, son útiles en la formación y educación en análisis de datos para profesionales de la salud, áreas STEM y toma de decisiones.La presente guía tiene como objetivo orientar paso a paso la instalación de R, Rstudio y SIVIREP para antes de la clase.
+
+
+R es un lenguaje de programación especializado para análisis de datos, es de uso gratuito y software libre. Por otra parte, RStudio es un editor de R también disponible de manera gratuita. La diferencia entre R y RStudio radica en que en R es el lenguaje de programación en el que escribimos el código y RStudio es el ambiente de desarrollo que permite trabajar con R de manera más fácil y amigable.
+
+En los últimos años el uso de R ha crecido en el ámbito académico y de la industria. R, además de ser un lenguaje de programación, es también un entorno para computación estadística y creación de visualizaciones. R y RStudio son herramientas esenciales para el estudio, análisis y toma de decisiones en salud pública, ya que permiten realizar análisis estadísticos detallados, modelar la propagación de enfermedades, visualizar datos de manera efectiva y automatizar tareas. Estas herramientas facilitan la manipulación y preparación de datos, fomentan la colaboración en proyectos de ciencia de datos, y la toma de decisiones basadas en evidencia. Además, son útiles en la formación y educación en análisis de datos para profesionales de la salud, áreas STEM y toma de decisiones.
+
+
+## Si presenta inconvenientes o errores que no puedan ser resueltos con la guía, por favor comunicarse vía email a:
+- Gina Polo: gina.polo@javeriana.edu.co
+- Jennifer Murillo: jemurillo@javeriana.edu.co
+
+
+# 3. Tabla de contenido
+- Tema 1: Instalación de R y RStudio
+- Tema 2: Instalación de SIVIREP
+- Tema 3: Verificación funcionamiento
+
 
 # 1. Introducción
 
@@ -84,10 +105,6 @@ Para comprobar que la instalación fue satisfactoria y en general para hacer uso
 </center>
 
 Escribe 2+2 donde aparece el curso y da enter, si te aparece el resultado 4 ¡Está todo listo para empezar!
-
-
-
-
 
 
 ### Tema 3: Ambiente de RStudio
